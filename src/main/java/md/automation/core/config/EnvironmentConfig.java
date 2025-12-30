@@ -4,36 +4,31 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class EnvironmentConfig {
+
     private static final Properties properties = new Properties();
 
     static {
-        String env = System.getProperty("env", "dev");
-        String fileName = "environments/" + env + ".properties";
-
-        try (InputStream is =
+        try (InputStream input =
                      EnvironmentConfig.class
                              .getClassLoader()
-                             .getResourceAsStream(fileName)) {
+                             .getResourceAsStream("application.properties")) {
 
-            if (is == null) {
-                throw new RuntimeException("Arquivo de ambiente não encontrado: " + fileName);
+            if (input == null) {
+                throw new RuntimeException("Arquivo application.properties não encontrado");
             }
-            properties.load(is);
+
+            properties.load(input);
 
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar configurações", e);
         }
     }
 
+    private EnvironmentConfig() {
+        // evita instância
+    }
+
     public static String get(String key) {
         return properties.getProperty(key);
-    }
-
-    public static boolean getBoolean(String key) {
-        return Boolean.parseBoolean(get(key));
-    }
-
-    public static int getInt(String key) {
-        return Integer.parseInt(get(key));
     }
 }
