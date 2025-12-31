@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/main/resources/features/web",
         glue = {
                 "md.automation.web",
+                "md.automation.core.hooks"
         },
         plugin = {
                 "pretty",
