@@ -20,6 +20,11 @@ public class CucumberHooks {
         MDC.put("scenario", scenario.getName());
         log.info("Iniciando cenário");
 
+        // 🚫 NÃO cria driver para cenários de API
+        if (scenario.getSourceTagNames().contains("@rest")) {
+            log.info("Cenário de API detectado - WebDriver NÃO será inicializado");
+            return;
+        }
         DriverManager.setDriver(WebDriverFactory.create());
     }
 
@@ -27,6 +32,11 @@ public class CucumberHooks {
     public void afterScenario(Scenario scenario) {
         if (scenario.isFailed()) {
             log.error("Cenário falhou");
+        }
+
+        // 🚫 NÃO tenta fechar driver em API
+        if (!scenario.getSourceTagNames().contains("@rest")) {
+            DriverManager.quitDriver();
         }
 
         DriverManager.quitDriver();

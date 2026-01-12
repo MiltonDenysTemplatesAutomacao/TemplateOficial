@@ -115,6 +115,36 @@
       <version>4.13.2</version>
       <scope>compile</scope>
     </dependency>
+      <!-- Rest Assured -->
+      <dependency>
+          <groupId>io.rest-assured</groupId>
+          <artifactId>rest-assured</artifactId>
+          <version>5.3.0</version>
+          <scope>test</scope>
+      </dependency>
+
+      <!-- JSON Path (para parsing de JSON) -->
+      <dependency>
+          <groupId>io.rest-assured</groupId>
+          <artifactId>json-path</artifactId>
+          <version>5.3.0</version>
+          <scope>test</scope>
+      </dependency>
+
+      <!-- Jackson (opcional, para mapeamento de objetos) -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.15.2</version>
+      </dependency>
+
+      <!-- Para assertions mais completas -->
+      <dependency>
+          <groupId>org.hamcrest</groupId>
+          <artifactId>hamcrest</artifactId>
+          <version>2.2</version>
+          <scope>test</scope>
+      </dependency>
 
   </dependencies>
 
