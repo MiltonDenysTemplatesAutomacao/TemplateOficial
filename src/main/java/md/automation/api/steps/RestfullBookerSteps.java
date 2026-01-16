@@ -15,12 +15,13 @@ public class RestfullBookerSteps {
 
     @Given("que eu tenho um endpoint para health check")
     public void que_eu_tenho_um_endpoint_para_health_check() {
+        restFullBookerLogic.setParameterHealthCheck();
 
     }
 
     @When("envio uma requisicao GET para o endpoint")
     public void envio_uma_requisicao_get_para_o_endpoint() {
-
+        restFullBookerLogic.sendGetRequestHealthCheck();
     }
 
     @Then("valido se o status code é {int}")
