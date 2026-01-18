@@ -15,8 +15,14 @@ Feature: Testes de API com Rest Assured usando RestFull Booker como exemplo
     When envio uma requisicao GET para o endpoint de booking
     Then valido se o status code é 200
 
-  @createBookingID
+  @createBooking
   Scenario: Booking - Create Booking
     Given que eu tenho um endpoint para get Create Booking
     When envio uma requisicao GET para o endpoint de Create Booking
+    Then valido se o status code é 200
+
+  @getBooking
+  Scenario: Booking - Get Booking
+    Given que eu tenho um endpoint com um id para Get Booking
+    When envio uma requisicao GET para o endpoint de Get Booking com o id "/2295"
     Then valido se o status code é 200

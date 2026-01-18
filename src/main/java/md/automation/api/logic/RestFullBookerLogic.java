@@ -19,6 +19,9 @@ public class RestFullBookerLogic {
     public void setParameterBookingId(){
         restAction.newRequest();
     }
+    public void setParameterGetBooking(){
+        restAction.newRequest();
+    }
     public void setParameterCreateBooking(){
         restAction.newRequest();
         restAction.getRequest().
@@ -37,6 +40,11 @@ public class RestFullBookerLogic {
     }
     public void sendPostRequestCreateBooking(){
         restAction.sendPost(ApiUrls.BASE_URL +ApiUrls.BOOKING);
+        restAction.printResponse();
+
+    }
+    public void sendGetRequestGetBooking(String id){
+        restAction.sendGet(ApiUrls.BASE_URL +ApiUrls.BOOKING+id);
         restAction.printResponse();
 
     }
