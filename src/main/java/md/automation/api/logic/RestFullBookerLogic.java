@@ -4,6 +4,7 @@ import io.restassured.http.ContentType;
 import md.automation.api.TokenRequest;
 import md.automation.core.actions.rest.RestActions;
 import md.automation.core.config.ApiUrls;
+import md.automation.core.enums.MediaType;
 
 public class RestFullBookerLogic {
 
@@ -30,13 +31,13 @@ public class RestFullBookerLogic {
     public void prepareUpdateBookingRequest() {
         String token = tokenRequest.acessToken();
         restAction.newRequest();
-        restAction.getRequest()
-                .header("Cookie", "token=" + token).
-                accept(ContentType.JSON).
-                contentType(ContentType.JSON).
+        restAction.getRequest().
+                accept(MediaType.JSON.value()).
+                contentType(MediaType.JSON.value()).
+                header("Cookie", "token=" + token).
                 body("{\n" +
                         "    \"firstname\" : \"Milton\",\n" +
-                        "    \"lastname\" : \"Denys\",\n" +
+                        "    \"lastname\" : \"Silva\",\n" +
                         "    \"totalprice\" : 111,\n" +
                         "    \"depositpaid\" : true,\n" +
                         "    \"bookingdates\" : {\n" +
