@@ -1,6 +1,5 @@
 package md.automation.api.steps;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -38,5 +37,15 @@ public class RestfullBookerSteps {
     @When("envio uma requisicao GET para o endpoint de booking")
     public void envioUmaRequisicaoGETParaOEndpointDeBooking() {
         restFullBookerLogic.sendGetRequestBookingId();
+    }
+
+    @Given("que eu tenho um endpoint para get Create Booking")
+    public void queEuTenhoUmEndpointParaGetCreateBooking() {
+        restFullBookerLogic.setParameterCreateBooking();
+    }
+
+    @When("envio uma requisicao GET para o endpoint de Create Booking")
+    public void envioUmaRequisicaoGETParaOEndpointDeCreateBooking() {
+        restFullBookerLogic.sendPostRequestCreateBooking();
     }
 }
