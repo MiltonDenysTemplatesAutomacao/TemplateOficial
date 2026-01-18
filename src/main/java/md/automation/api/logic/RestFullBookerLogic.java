@@ -50,8 +50,17 @@ public class RestFullBookerLogic {
     }
 
     public void preparePartialUpdateBookingRequest() {
+        String token = tokenRequest.acessToken();
         restAction.newRequest();
-    }
+        restAction.getRequest().
+                accept(MediaType.JSON.value()).
+                contentType(MediaType.JSON.value()).
+                header("Cookie", "token=" + token).
+                body("{\n" +
+                        "    \"firstname\" : \"Tamirez\",\n" +
+                        "    \"lastname\" : \"Guedes\"\n" +
+
+                        "}");    }
 
     public void prepareDeleteBookingRequest() {
         restAction.newRequest();

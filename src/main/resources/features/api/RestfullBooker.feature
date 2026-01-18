@@ -36,11 +36,11 @@ Feature: Testes de API com Rest Assured usando RestFull Booker como exemplo
   @partialUpdateBooking
   Scenario: Booking - Update Booking
     Given que eu tenho um endpoint com um id para Partial Update Booking
-    When envio uma requisicao PATCH para o endpoint de Booking com o id "/1924"
+    When envio uma requisicao PATCH para o endpoint de Booking com o id "/1141"
     Then valido se o status code é 200
 
   @deleteBooking
   Scenario: Booking - Delete Booking
     Given que eu tenho um endpoint com um id para Delete Booking
-    When envio uma requisicao DELETE para o endpoint de Booking com o id "/1924"
+    When envio uma requisicao DELETE para o endpoint de Booking com o id "/1141"
     Then valido se o status code é 200
