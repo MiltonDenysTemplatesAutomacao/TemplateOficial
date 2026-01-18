@@ -25,7 +25,7 @@ public class RestfullBookerSteps {
     }
 
     @Then("valido se o status code é {int}")
-    public void valido_se_o_status_code_e(Integer int1) {
-
+    public void valido_se_o_status_code_e(Integer statusCode) {
+        restFullBookerLogic.validateStatusCode(statusCode);
     }
 }

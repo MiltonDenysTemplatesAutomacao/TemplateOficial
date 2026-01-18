@@ -1,6 +1,7 @@
 package md.automation.core.actions.rest;
 
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -30,11 +31,28 @@ public class RestActions {
     public void sendGet(String endpoint) {
         response = request.get(endpoint);
     }
+    public String getResponseValue(String jsonPath) {
+        return response
+                .then()
+                .extract()
+                .path(jsonPath);
+    }
 
-
-    public Response setResponse() {
+    public Response getResponse() {
         return response;
     }
+    public void printResponse() {
+        getResponse().then().log().all();
+    }
+    public void validateStatusCode(int expectedStatusCode) {
+        getResponse().then().statusCode(expectedStatusCode);
+    }
+    public int getStatusCode() {
+        return getResponse().getStatusCode();
+    }
+
+
+
 }
 
 

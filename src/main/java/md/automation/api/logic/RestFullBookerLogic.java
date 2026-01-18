@@ -1,28 +1,27 @@
 package md.automation.api.logic;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
+import md.automation.api.TokenRequest;
 import md.automation.core.actions.rest.RestActions;
+import md.automation.core.config.ApiUrls;
 
 public class RestFullBookerLogic {
 
-/// TODO implementar logica das apis
-
-
-    private final String baseUrl = "https://restful-booker.herokuapp.com/ping";
     private RestActions restAction;
-
+    private TokenRequest tokenRequest;
     public RestFullBookerLogic(){
         restAction= new RestActions();
+        tokenRequest = new TokenRequest();
     }
 
     public void setParameterHealthCheck(){
+        String token = tokenRequest.acessToken();
         restAction.newRequest();
-        restAction.getRequest().
-                contentType(ContentType.JSON);
     }
     public void sendGetRequestHealthCheck(){
-        restAction.sendGet(baseUrl);
+        restAction.sendGet(ApiUrls.BASE_URL +ApiUrls.HEALTH_CHECK);
+        restAction.printResponse();
+
     }
-
-
+    public void validateStatusCode(Integer statusCode){
+        restAction.validateStatusCode(statusCode);
+    }
 }
