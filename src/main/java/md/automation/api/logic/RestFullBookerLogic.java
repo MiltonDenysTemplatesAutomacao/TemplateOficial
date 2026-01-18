@@ -63,8 +63,12 @@ public class RestFullBookerLogic {
                         "}");    }
 
     public void prepareDeleteBookingRequest() {
+        String token = tokenRequest.acessToken();
         restAction.newRequest();
-    }
+        restAction.getRequest().
+                contentType(MediaType.JSON.value()).
+                header("Cookie", "token=" + token);
+             }
 
     public void prepareCreateBookingRequest() {
         restAction.newRequest();
