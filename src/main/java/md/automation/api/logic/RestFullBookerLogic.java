@@ -35,17 +35,7 @@ public class RestFullBookerLogic {
                 accept(MediaType.JSON.value()).
                 contentType(MediaType.JSON.value()).
                 header("Cookie", "token=" + token).
-                body("{\n" +
-                        "    \"firstname\" : \"Milton\",\n" +
-                        "    \"lastname\" : \"Silva\",\n" +
-                        "    \"totalprice\" : 111,\n" +
-                        "    \"depositpaid\" : true,\n" +
-                        "    \"bookingdates\" : {\n" +
-                        "        \"checkin\" : \"2018-01-01\",\n" +
-                        "        \"checkout\" : \"2019-01-01\"\n" +
-                        "    },\n" +
-                        "    \"additionalneeds\" : \"Breakfast\"\n" +
-                        "}");
+                body(restAction.getJsonFromData("updateBooking.json"));
 
     }
 
@@ -56,11 +46,8 @@ public class RestFullBookerLogic {
                 accept(MediaType.JSON.value()).
                 contentType(MediaType.JSON.value()).
                 header("Cookie", "token=" + token).
-                body("{\n" +
-                        "    \"firstname\" : \"Tamirez\",\n" +
-                        "    \"lastname\" : \"Guedes\"\n" +
-
-                        "}");    }
+                body(restAction.getJsonFromData("partialUpdateBooking.json"));
+    }
 
     public void prepareDeleteBookingRequest() {
         String token = tokenRequest.acessToken();
@@ -74,17 +61,7 @@ public class RestFullBookerLogic {
         restAction.newRequest();
         restAction.getRequest().
                 contentType(ContentType.JSON).
-                body("{\n" +
-                        "    \"firstname\" : \"Milton\",\n" +
-                        "    \"lastname\" : \"Denys\",\n" +
-                        "    \"totalprice\" : 111,\n" +
-                        "    \"depositpaid\" : true,\n" +
-                        "    \"bookingdates\" : {\n" +
-                        "        \"checkin\" : \"2018-01-01\",\n" +
-                        "        \"checkout\" : \"2019-01-01\"\n" +
-                        "    },\n" +
-                        "    \"additionalneeds\" : \"Breakfast\"\n" +
-                        "}");
+                body(restAction.getJsonFromData("createBooking.json"));
     }
 
     public void sendPostRequestCreateBooking() {

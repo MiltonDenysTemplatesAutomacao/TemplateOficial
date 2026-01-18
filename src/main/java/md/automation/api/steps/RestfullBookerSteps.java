@@ -24,7 +24,7 @@ public class RestfullBookerSteps {
         restFullBookerLogic.sendGetRequestHealthCheck();
     }
 
-    @Then("valido se o status code é {int}")
+    @Then("valido se o status code e {int}")
     public void valido_se_o_status_code_e(Integer statusCode) {
         restFullBookerLogic.validateStatusCode(statusCode);
     }
@@ -44,8 +44,8 @@ public class RestfullBookerSteps {
         restFullBookerLogic.prepareCreateBookingRequest();
     }
 
-    @When("envio uma requisicao GET para o endpoint de Create Booking")
-    public void envioUmaRequisicaoGETParaOEndpointDeCreateBooking() {
+    @When("envio uma requisicao POST para o endpoint de Create Booking")
+    public void envioUmaRequisicaoPostParaOEndpointDeCreateBooking() {
         restFullBookerLogic.sendPostRequestCreateBooking();
     }
 

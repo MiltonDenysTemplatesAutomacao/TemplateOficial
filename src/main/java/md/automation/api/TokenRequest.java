@@ -17,10 +17,7 @@ public class TokenRequest {
         restAction.getRequest()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                        .body("{\n" +
-                                "    \"username\" : \"admin\",\n" +
-                                "    \"password\" : \"password123\"\n" +
-                                "}");
+                        .body(restAction.getJsonFromData("token.json"));
         restAction.sendPost(ApiUrls.BASE_URL + ApiUrls.AUTH);
         token =restAction.getResponseValue("token");
 
