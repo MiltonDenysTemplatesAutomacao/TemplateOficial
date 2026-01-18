@@ -1,5 +1,6 @@
 package md.automation.web.steps;
 
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,4 +23,5 @@ public class LoginSteps {
     public void validarPaginaInicial() {
         loginLogic.validateHomePage();
     }
+
 }

@@ -31,6 +31,15 @@ public class RestActions {
     public void sendGet(String endpoint) {
         response = request.get(endpoint);
     }
+    public void sendPatch(String endpoint) {
+        response = request.patch(endpoint);
+    }
+    public void sendPut(String endpoint) {
+        response = request.put(endpoint);
+    }
+    public void sendDelete(String endpoint) {
+        response = request.delete(endpoint);
+    }
     public String getResponseValue(String jsonPath) {
         return response
                 .then()
