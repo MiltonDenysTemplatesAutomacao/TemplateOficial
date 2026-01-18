@@ -1,5 +1,6 @@
 package md.automation.api.steps;
 
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,5 +28,15 @@ public class RestfullBookerSteps {
     @Then("valido se o status code é {int}")
     public void valido_se_o_status_code_e(Integer statusCode) {
         restFullBookerLogic.validateStatusCode(statusCode);
+    }
+
+    @Given("que eu tenho um endpoint para get book id")
+    public void queEuTenhoUmEndpointParaGetBookId() {
+        restFullBookerLogic.setParameterBookingId();
+    }
+
+    @When("envio uma requisicao GET para o endpoint de booking")
+    public void envioUmaRequisicaoGETParaOEndpointDeBooking() {
+        restFullBookerLogic.sendGetRequestBookingId();
     }
 }

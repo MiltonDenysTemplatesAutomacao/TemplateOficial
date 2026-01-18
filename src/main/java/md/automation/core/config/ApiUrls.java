@@ -8,4 +8,5 @@ public class ApiUrls {
 //    Endpoints
     public static final String HEALTH_CHECK = "/ping";
     public static final String AUTH = "/auth";
+    public static final String BOOKING = "/booking";
 }

@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
                 "pretty",
                 "html:target/cucumber-report/rest-report.html"
         },
-        tags = "@rest or @healthCheck",
+        tags = "@getBookID",
         monochrome = true
 )
 

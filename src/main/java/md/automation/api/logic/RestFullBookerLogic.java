@@ -13,8 +13,15 @@ public class RestFullBookerLogic {
     }
 
     public void setParameterHealthCheck(){
-        String token = tokenRequest.acessToken();
         restAction.newRequest();
+    }
+    public void setParameterBookingId(){
+        restAction.newRequest();
+    }
+    public void sendGetRequestBookingId(){
+        restAction.sendGet(ApiUrls.BASE_URL +ApiUrls.BOOKING);
+        restAction.printResponse();
+
     }
     public void sendGetRequestHealthCheck(){
         restAction.sendGet(ApiUrls.BASE_URL +ApiUrls.HEALTH_CHECK);
