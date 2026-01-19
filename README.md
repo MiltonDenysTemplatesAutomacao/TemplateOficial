@@ -111,58 +111,40 @@ src/main/java/               # Classes utilitárias, drivers, configurações do
 src/test/java/               # Step Definitions, runners, testes
 src/test/resources/features/ # Arquivos .feature (BDD / Gherkin)
 resources/                   # Arquivos de configuração (.properties, .env.example)
-pom.xml ou build.gradle      # Gerenciador de dependências e build
+pom.xml ou build.gradle      # Gerenciador de dependências e build 
+```
+## ⚙️ Instalação
 
-## Relatórios
+Siga os passos abaixo para configurar o projeto localmente.
 
-O **TemplateOficial** utiliza **Extent Reports** para geração de relatórios de execução dos testes automatizados, proporcionando uma visualização clara, organizada e detalhada dos resultados.
+### 1️⃣ Clonar o repositório
 
-Os relatórios são integrados ao fluxo de execução **BDD (Cucumber)** e funcionam tanto para **testes Web** quanto para **testes de API**.
+```bash
+git clone https://github.com/MiltonDenysTemplatesAutomacao/TemplateOficial.git
+cd TemplateOficial
+```
+### 2️⃣ Instalar as dependências
+```bash
+mvn clean install
+```
 
----
+### 3️⃣ Verificações importantes
 
-### 📊 Relatórios com Extent Reports
+📌 Antes de executar os testes, verifique se:
 
-O Extent Reports apresenta informações como:
+- O **Java** está instalado corretamente:
 
-- Status do cenário (**PASS / FAIL**)
-- Logs detalhados da execução
-- Organização por feature e cenário
-- Evidências visuais (quando aplicável)
-- Integração com execução automatizada via Maven/Gradle
+  ```bash
+  java -version
 
----
+### 4️⃣ Testes Web (WebDriver)
 
-### 📸 Política de Captura de Screenshots
+Para testes de interface Web:
 
-A captura de screenshots segue a política abaixo:
+- Não é necessário baixar ou configurar o **WebDriver** manualmente
+- O driver do navegador é baixado automaticamente durante a execução dos testes
+- Basta ter o navegador instalado (ex.: **Google Chrome**)
 
-| Tipo de cenário | Resultado | Screenshot |
-|-----------------|-----------|------------|
-| `@web`          | FAIL      | ✅ Sim     |
-| `@web`          | PASS      | ❌ Não     |
-| `@rest`         | FAIL      | ❌ Não     |
-| `@rest`         | PASS      | ❌ Não     |
+📌 Essa abordagem simplifica a configuração do ambiente e evita problemas de compatibilidade de versões.
 
-📌 **Observações importantes:**
-- Screenshots são capturados **apenas para cenários Web que falham**
-- Cenários de **API (Rest Assured)** não geram screenshots
-- Essa abordagem evita relatórios poluídos e mantém o foco em evidências relevantes
-
----
-
-### 📦 Dependências de Relatórios
-
-O projeto inclui dependências específicas para suportar a geração de relatórios com **Extent Reports**, já integradas ao fluxo de execução dos testes.
-
-> As dependências e versões utilizadas podem ser consultadas diretamente no arquivo `pom.xml` ou `build.gradle`.
-
----
-
-### ✅ Benefícios do uso do Extent Reports
-
-- Relatórios claros e de fácil leitura
-- Melhor rastreabilidade de falhas
-- Evidências geradas apenas quando necessário
-- Compatível com automação **Web e API**
-- Pronto para uso em pipelines de **CI/CD**
+Após esses passos, o projeto estará pronto para a execução dos testes automatizados.
