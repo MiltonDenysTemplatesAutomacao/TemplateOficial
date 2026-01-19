@@ -60,7 +60,7 @@ public class RestFullBookerLogic {
         restAction.getRequest().
                 contentType(MediaType.JSON.value()).
                 header("Cookie", "token=" + token);
-             }
+    }
 
     public void prepareCreateBookingRequest() {
         restAction.newRequest();
@@ -76,25 +76,25 @@ public class RestFullBookerLogic {
     }
 
     public void sendGetRequestGetBooking(String id) {
-        restAction.sendGet(ApiUrls.BASE_URL + ApiUrls.BOOKING +"/"+ id);
+        restAction.sendGet(ApiUrls.BASE_URL + ApiUrls.BOOKING + "/" + id);
         restAction.printResponse();
 
     }
 
     public void sendPutRequestUpdateBooking(String id) {
-        restAction.sendPut(ApiUrls.BASE_URL + ApiUrls.BOOKING + "/"+id);
+        restAction.sendPut(ApiUrls.BASE_URL + ApiUrls.BOOKING + "/" + id);
         restAction.printResponse();
 
     }
 
     public void sendPatchRequestPartialUpdateBooking(String id) {
-        restAction.sendPatch(ApiUrls.BASE_URL + ApiUrls.BOOKING + "/"+ id);
+        restAction.sendPatch(ApiUrls.BASE_URL + ApiUrls.BOOKING + "/" + id);
         restAction.printResponse();
 
     }
 
     public void sendDeleteRequestDeleteBooking(String id) {
-        restAction.sendDelete(ApiUrls.BASE_URL + ApiUrls.BOOKING +"/"+ id);
+        restAction.sendDelete(ApiUrls.BASE_URL + ApiUrls.BOOKING + "/" + id);
         restAction.printResponse();
 
     }
@@ -115,30 +115,21 @@ public class RestFullBookerLogic {
         restAction.validateStatusCode(statusCode);
     }
 
-//    public void validateFieldsFromResponseJson(Map<String,String> fields){
-//        fields.forEach((k,v)->{
-//            String value = restAction.getResponse().getBody().jsonPath().getString(k).replace("[","").replace("]","").trim();
-//            String expected = v.trim();
-//            Assert.assertEquals(value,expected);
-//        });
-//
-//    }
-public void validateFieldsFromResponseJson(Map<String, String> fields) {
-    log.info("Validando campos do body");
+    public void validateFieldsFromResponseJson(Map<String, String> fields) {
+        log.info("Validando campos do body");
 
-    fields.forEach((key, expected) -> {
-        String actual = restAction.getResponse()
-                .getBody()
-                .jsonPath()
-                .getString(key);
+        fields.forEach((key, expected) -> {
+            String actual = restAction.getResponse()
+                    .getBody()
+                    .jsonPath()
+                    .getString(key);
 
-        Assert.assertNotNull("Campo não encontrado: " + key, actual);
-        Assert.assertEquals("Valor incorreto para o campo: " + key, expected.trim(), actual.trim());
+            Assert.assertNotNull("Campo não encontrado: " + key, actual);
+            Assert.assertEquals("Valor incorreto para o campo: " + key, expected.trim(), actual.trim());
 
-        log.info("OK -> {} = {}", key, actual);
-    });
-}
-
+            log.info("OK -> {} = {}", key, actual);
+        });
+    }
 
 
 }
