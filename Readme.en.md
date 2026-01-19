@@ -69,6 +69,10 @@ With this addition, the project supports **hybrid automation (Web + API)** while
     - Status codes
     - Response body
     - Response headers
+    - Required fields
+  - Field data types
+  - Expected values in the response
+  - Error messages and business rules
 - Integration with **BDD (Cucumber + Gherkin)**
 
 ### Benefits

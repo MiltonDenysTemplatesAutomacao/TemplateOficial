@@ -69,6 +69,11 @@ Com essa adição, o projeto passa a suportar **automação híbrida (Web + API)
     - Status Code
     - Body da resposta
     - Headers do response
+    -   Campos obrigatórios
+    - Tipos de dados dos campos
+    - Valores esperados no response
+    - Mensagens de erro e regras de negócio
+  
 - Integração com **BDD (Cucumber + Gherkin)**
 
 ### Benefícios
