@@ -1,9 +1,13 @@
 package md.automation.api.steps;
 
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import md.automation.api.logic.RestFullBookerLogic;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RestfullBookerSteps {
 
@@ -90,6 +94,14 @@ public class RestfullBookerSteps {
     @When("envio uma requisicao DELETE para o endpoint de Booking com o id {string}")
     public void envioUmaRequisicaoDELETEParaOEndpointDeBookingComOId(String id) {
         restFullBookerLogic.sendDeleteRequestDeleteBooking(id);
+
+    }
+
+    @Then("valido o campo {string} e valor {string}")
+    public void validoOCampoEValor(String responseField , String responseFieldValue) {
+        Map<String,String> fields = new HashMap<>();
+        fields.put(responseField,responseFieldValue);
+        restFullBookerLogic.validateFieldsFromResponseJson(fields);
 
     }
 }

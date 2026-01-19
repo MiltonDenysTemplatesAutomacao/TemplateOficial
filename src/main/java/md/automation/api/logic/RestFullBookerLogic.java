@@ -1,11 +1,16 @@
 package md.automation.api.logic;
 
 import io.restassured.http.ContentType;
+import lombok.extern.log4j.Log4j2;
 import md.automation.api.TokenRequest;
 import md.automation.core.actions.rest.RestActions;
 import md.automation.core.config.ApiUrls;
 import md.automation.core.enums.MediaType;
+import org.junit.Assert;
 
+import java.util.Map;
+
+@Log4j2
 public class RestFullBookerLogic {
 
     private RestActions restAction;
@@ -109,4 +114,31 @@ public class RestFullBookerLogic {
     public void validateStatusCode(Integer statusCode) {
         restAction.validateStatusCode(statusCode);
     }
+
+//    public void validateFieldsFromResponseJson(Map<String,String> fields){
+//        fields.forEach((k,v)->{
+//            String value = restAction.getResponse().getBody().jsonPath().getString(k).replace("[","").replace("]","").trim();
+//            String expected = v.trim();
+//            Assert.assertEquals(value,expected);
+//        });
+//
+//    }
+public void validateFieldsFromResponseJson(Map<String, String> fields) {
+    log.info("Validando campos do body");
+
+    fields.forEach((key, expected) -> {
+        String actual = restAction.getResponse()
+                .getBody()
+                .jsonPath()
+                .getString(key);
+
+        Assert.assertNotNull("Campo não encontrado: " + key, actual);
+        Assert.assertEquals("Valor incorreto para o campo: " + key, expected.trim(), actual.trim());
+
+        log.info("OK -> {} = {}", key, actual);
+    });
+}
+
+
+
 }

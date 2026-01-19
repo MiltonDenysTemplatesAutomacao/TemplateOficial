@@ -21,6 +21,15 @@ Feature: Testes de API com Rest Assured usando RestFull Booker como exemplo
     When envio uma requisicao POST para o endpoint de Create Booking
     Then valido se o status code e 200
 
+  @createBookingValidateTotalPrice
+  Scenario Outline: Booking - Create Booking
+    Given que eu tenho um endpoint para get Create Booking
+    When envio uma requisicao POST para o endpoint de Create Booking
+    Then valido o campo "<responseField>" e valor "<responseFieldValue>"
+    Examples:
+    |responseField    |responseFieldValue |
+    |booking.firstname|Milton             |
+
   @getBooking
   Scenario: Booking - Get Booking
     Given que eu tenho um endpoint com um id para Get Booking

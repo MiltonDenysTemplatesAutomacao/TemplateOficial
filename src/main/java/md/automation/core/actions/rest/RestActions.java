@@ -3,10 +3,13 @@ package md.automation.core.actions.rest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
+@Slf4j
 public class RestActions {
 
     private RequestSpecification request;
