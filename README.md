@@ -112,3 +112,57 @@ src/test/java/               # Step Definitions, runners, testes
 src/test/resources/features/ # Arquivos .feature (BDD / Gherkin)
 resources/                   # Arquivos de configuração (.properties, .env.example)
 pom.xml ou build.gradle      # Gerenciador de dependências e build
+
+## Relatórios
+
+O **TemplateOficial** utiliza **Extent Reports** para geração de relatórios de execução dos testes automatizados, proporcionando uma visualização clara, organizada e detalhada dos resultados.
+
+Os relatórios são integrados ao fluxo de execução **BDD (Cucumber)** e funcionam tanto para **testes Web** quanto para **testes de API**.
+
+---
+
+### 📊 Relatórios com Extent Reports
+
+O Extent Reports apresenta informações como:
+
+- Status do cenário (**PASS / FAIL**)
+- Logs detalhados da execução
+- Organização por feature e cenário
+- Evidências visuais (quando aplicável)
+- Integração com execução automatizada via Maven/Gradle
+
+---
+
+### 📸 Política de Captura de Screenshots
+
+A captura de screenshots segue a política abaixo:
+
+| Tipo de cenário | Resultado | Screenshot |
+|-----------------|-----------|------------|
+| `@web`          | FAIL      | ✅ Sim     |
+| `@web`          | PASS      | ❌ Não     |
+| `@rest`         | FAIL      | ❌ Não     |
+| `@rest`         | PASS      | ❌ Não     |
+
+📌 **Observações importantes:**
+- Screenshots são capturados **apenas para cenários Web que falham**
+- Cenários de **API (Rest Assured)** não geram screenshots
+- Essa abordagem evita relatórios poluídos e mantém o foco em evidências relevantes
+
+---
+
+### 📦 Dependências de Relatórios
+
+O projeto inclui dependências específicas para suportar a geração de relatórios com **Extent Reports**, já integradas ao fluxo de execução dos testes.
+
+> As dependências e versões utilizadas podem ser consultadas diretamente no arquivo `pom.xml` ou `build.gradle`.
+
+---
+
+### ✅ Benefícios do uso do Extent Reports
+
+- Relatórios claros e de fácil leitura
+- Melhor rastreabilidade de falhas
+- Evidências geradas apenas quando necessário
+- Compatível com automação **Web e API**
+- Pronto para uso em pipelines de **CI/CD**

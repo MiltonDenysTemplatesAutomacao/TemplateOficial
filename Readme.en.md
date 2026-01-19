@@ -110,3 +110,57 @@ src/test/java/               # Step Definitions, runners, tests
 src/test/resources/features/ # .feature files (BDD / Gherkin)
 resources/                   # Configuration files (.properties, .env.example)
 pom.xml or build.gradle      # Dependency and build management
+
+## Reports
+
+**TemplateOficial** uses **Extent Reports** to generate execution reports for automated tests, providing a clear, organized, and detailed view of the results.
+
+The reports are integrated into the **BDD (Cucumber)** execution flow and work for both **Web tests** and **API tests**.
+
+---
+
+### 📊 Reports with Extent Reports
+
+Extent Reports provides information such as:
+
+- Scenario status (**PASS / FAIL**)
+- Detailed execution logs
+- Organization by feature and scenario
+- Visual evidence (when applicable)
+- Integration with automated execution via Maven/Gradle
+
+---
+
+### 📸 Screenshot Capture Policy
+
+Screenshot capture follows the policy below:
+
+| Scenario type | Result | Screenshot |
+|---------------|--------|------------|
+| `@web`        | FAIL   | ✅ Yes     |
+| `@web`        | PASS   | ❌ No      |
+| `@rest`       | FAIL   | ❌ No      |
+| `@rest`       | PASS   | ❌ No      |
+
+📌 **Important notes:**
+- Screenshots are captured **only for failed Web scenarios**
+- **API scenarios (Rest Assured)** do not generate screenshots
+- This approach avoids cluttered reports and keeps the focus on relevant evidence
+
+---
+
+### 📦 Reporting Dependencies
+
+The project includes specific dependencies to support report generation with **Extent Reports**, already integrated into the test execution flow.
+
+> Dependency details and versions can be found in the `pom.xml` or `build.gradle` file.
+
+---
+
+### ✅ Benefits of using Extent Reports
+
+- Clear and easy-to-read reports
+- Improved failure traceability
+- Evidence generated only when necessary
+- Compatible with **Web and API** automation
+- Ready for use in **CI/CD pipelines**

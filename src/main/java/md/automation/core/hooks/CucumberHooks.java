@@ -13,6 +13,7 @@ import md.automation.core.utils.ExtentScenarioContext;
 import md.automation.core.utils.ScreenshotUtils;
 import org.slf4j.Logger;
 import org.slf4j.MDC;
+import org.openqa.selenium.WebDriver;
 
 public class CucumberHooks {
 
@@ -39,41 +40,48 @@ public class CucumberHooks {
             return;
         }
 
-        DriverManager.setDriver(WebDriverFactory.create());
-        test.info("WebDriver initialized");
+        if (scenario.getSourceTagNames().contains("@web")) {
+            DriverManager.setDriver(WebDriverFactory.create());
+            test.info("WebDriver initialized");
+        }
     }
 
     @After
     public void afterScenario(Scenario scenario) {
 
         ExtentTest test = ExtentScenarioContext.get();
+        boolean isWebScenario =
+                scenario.getSourceTagNames().contains("@web");
 
         if (scenario.isFailed()) {
             log.error("Scenario failed");
             test.fail("Scenario failed");
 
-            boolean isWebScenario =
-                    !scenario.getSourceTagNames().contains("@rest");
+            if (isWebScenario) {
 
-            if (isWebScenario && DriverManager.getDriver() != null) {
+                WebDriver driver = DriverManager.getDriver();
 
-                String path = ScreenshotUtils.capture(
-                        DriverManager.getDriver(),
-                        scenario.getName() + "_" + System.currentTimeMillis()
-                );
-
-                test.addScreenCaptureFromPath(path);
+                if (driver != null) {
+                    String path = ScreenshotUtils.capture(
+                            driver,
+                            scenario.getName()
+                    );
+                    test.addScreenCaptureFromPath(path);
+                } else {
+                    test.warning("WebDriver was null. Screenshot not taken.");
+                }
             }
         } else {
             log.info("Scenario executed successfully");
             test.pass("Scenario executed successfully");
         }
 
-        if (!scenario.getSourceTagNames().contains("@rest")
-                && DriverManager.getDriver() != null) {
-
+        if (isWebScenario && DriverManager.getDriver() != null) {
             DriverManager.quitDriver();
             test.info("WebDriver finalized");
         }
+
+        ExtentScenarioContext.remove();
+        MDC.clear();
     }
 }
