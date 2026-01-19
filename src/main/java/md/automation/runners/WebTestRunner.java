@@ -2,6 +2,8 @@ package md.automation.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import md.automation.core.utils.ExtentManager;
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -19,4 +21,8 @@ import org.junit.runner.RunWith;
         monochrome = true
 )
 public class WebTestRunner {
+        @AfterClass
+        public static void finalizarRelatorio() {
+                ExtentManager.getInstance().flush();
+        }
 }

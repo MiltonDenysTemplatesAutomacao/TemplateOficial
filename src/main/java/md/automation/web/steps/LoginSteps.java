@@ -9,19 +9,20 @@ import md.automation.web.logic.LoginLogic;
 public class LoginSteps {
     private final LoginLogic loginLogic = new LoginLogic();
 
-    @Given("que o usuário acessa a página de login")
-    public void acessarPaginaLogin() {
+    @Given("user accesses the login page")
+    public void userAccessesLoginPage() {
         loginLogic.accessLoginPage();
     }
 
-    @When("ele realiza login com usuário e senha válidos")
-    public void realizarLoginValido() {
+    @When("user logs in with valid username and password")
+    public void userLogsIn() {
         loginLogic.performValidLogin();
     }
 
-    @Then("o sistema deve exibir a página inicial")
-    public void validarPaginaInicial() {
+    @Then("the system should display the home page")
+    public void systemDisplaysHomePage() {
         loginLogic.validateHomePage();
     }
+
 
 }

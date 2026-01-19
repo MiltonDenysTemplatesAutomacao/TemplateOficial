@@ -1,8 +1,8 @@
 @web
 Feature: Login
 
-@login
-  Scenario: Login com credenciais válidas
-    Given que o usuário acessa a página de login
-    When ele realiza login com usuário e senha válidos
-    Then o sistema deve exibir a página inicial
+  @login
+  Scenario: Login with valid credentials
+    Given user accesses the login page
+    When user logs in with valid username and password
+    Then the system should display the home page
